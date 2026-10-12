@@ -24,3 +24,4 @@ alts.json
 # OS
 .DS_Store
 Thumbs.db
+/MavenMCP-1.8.9-master
