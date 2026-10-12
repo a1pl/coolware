@@ -1,1 +1,26 @@
-/MavenMCP-1.8.9-master
+# Build output
+target/
+*.class
+
+# IDE
+.idea/workspace.xml
+.idea/shelf/
+*.iml.bak
+
+# Game runtime files (test_run is the client's working directory)
+test_run/logs/
+test_run/saves/
+test_run/assets/
+test_run/screenshots/
+test_run/resourcepacks/
+test_run/shaderpacks/
+test_run/coolware/alts/
+*.log
+*.log.gz
+
+# Account data (contains login tokens)
+alts.json
+
+# OS
+.DS_Store
+Thumbs.db
