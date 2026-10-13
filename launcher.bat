@@ -13,12 +13,12 @@ echo.
 set "SCRIPT_DIR=%~dp0"
 if "%SCRIPT_DIR:~-1%"=="\" set "SCRIPT_DIR=%SCRIPT_DIR:~0,-1%"
 
-if exist "%SCRIPT_DIR%\MavenMCP-1.8.9-master\pom.xml" (
-    set "MCP_DIR=%SCRIPT_DIR%\MavenMCP-1.8.9-master"
-    set "ROOT_DIR=%SCRIPT_DIR%"
-) else if exist "%SCRIPT_DIR%\pom.xml" (
+if exist "%SCRIPT_DIR%\pom.xml" (
     set "MCP_DIR=%SCRIPT_DIR%"
     set "ROOT_DIR=%SCRIPT_DIR%\.."
+) else if exist "%SCRIPT_DIR%\MavenMCP-1.8.9-master\pom.xml" (
+    set "MCP_DIR=%SCRIPT_DIR%\MavenMCP-1.8.9-master"
+    set "ROOT_DIR=%SCRIPT_DIR%"
 ) else (
     set "MCP_DIR=%SCRIPT_DIR%\MavenMCP-1.8.9-master"
     set "ROOT_DIR=%SCRIPT_DIR%"
@@ -223,9 +223,9 @@ if defined BUILD_NEEDED (
         exit /b 1
     )
 
-    echo [*] Building with JDK: %BUILD_JAVA_HOME%
-    set "JAVA_HOME=%BUILD_JAVA_HOME%"
-    set "PATH=%BUILD_JAVA_HOME%\bin;%PATH%"
+    echo [*] Building with JDK: !BUILD_JAVA_HOME!
+    set "JAVA_HOME=!BUILD_JAVA_HOME!"
+    set "PATH=!BUILD_JAVA_HOME!\bin;%PATH%"
     
     call "%MVN_CMD%" -f "%MCP_DIR%\pom.xml" clean package -DskipTests
     if !errorlevel! neq 0 (
